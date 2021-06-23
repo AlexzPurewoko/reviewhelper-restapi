@@ -13,6 +13,9 @@ const PORT = process.env.PORT || 5000;
     const supabaseKey = process.env.SUPABASE_KEY || "add here"
     console.log(supabaseKey)
     const supabase = createClient(supabaseUrl, supabaseKey);
+    await supabase.auth.signIn({
+        email: "purwoko908@gmail.com"
+    })
 
     const app = express();
     app.use(cors());
