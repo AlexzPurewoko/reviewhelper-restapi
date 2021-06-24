@@ -11,11 +11,12 @@ const PORT = process.env.PORT || 5000;
 (async () => {
     const supabaseUrl: string = 'https://idcwghyjlmjudylmanoi.supabase.co';
     const supabaseKey = process.env.SUPABASE_KEY || "add here"
-    console.log(supabaseKey)
     const supabase = createClient(supabaseUrl, supabaseKey);
     await supabase.auth.signIn({
         email: "purwoko908@gmail.com"
     })
+
+    console.log(await supabase?.from("guideline_classes")?.select("*"))
 
     const app = express();
     app.use(cors());
